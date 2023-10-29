@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="/static/dashboard/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="" class="logo"><h1>NUSON</h1></a>
+      <div class="nav-link">
+        <a href="{% url 'index' %}">Dashboard</a>
+        <a href="{% url 'statistik' %}">Statistik</a>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="content">
+        <canvas id="myChart"></canvas>
+      </div>
+      <section class="section">
+        <div class="box">
+          <div class="item">Vertical</div>
+          <div class="item">Horizontal</div>
+          <div class="item">Retak Buaya</div>
+          <div class="item">Lubang</div>
+        </div>
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Sensor 1</th>
+                <th>Sensor 2</th>
+                <th>Sensor 3</th>
+                <th>Sensor 4</th>
+                <th>Sensor 5</th>
+                <th>Device</th>
+                <th>Waktu</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in datas %}
+              <tr>
+                <td>{{ data.nilai1 }}</td>
+                <td>{{ data.nilai2 }}</td>
+                <td>{{ data.nilai3 }}</td>
+                <td>{{ data.nilai4 }}</td>
+                <td>{{ data.nilai5 }}</td>
+                <td>{{ data.deviceName }}</td>
+                <td>{{ data.waktu }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <script src="/static/dashboard/js/app.js"></script>
+  </body>
+</html>

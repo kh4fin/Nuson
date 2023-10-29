@@ -1,0 +1,29 @@
+# Virtual environments
+venv/
+env/
+__pycache__/
+
+# Python cache files
+*.pyc
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# Secret keys
+*.env
+
+# IDE-specific files
+.vscode/
+.idea/
+
+*.pyc
+*.sqlite3
+*.log
+
+static/
+media/
+
+*.conf
+*.swp
+

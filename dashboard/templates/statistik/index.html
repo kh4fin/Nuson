@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nuson | Statistik</title>
+    <link rel="stylesheet" href="/static/statistik/css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="" class="logo"><h1>NUSON</h1></a>
+      <div class="nav-link">
+        <a href="{% url 'index' %}">Dashboard</a>
+        <a href="{% url 'statistik' %}">Statistik</a>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <div class="content">
+        <div class="table">
+          <table>
+            <thead>
+              <tr>
+                <th>Sensor 1</th>
+                <th>Sensor 2</th>
+                <th>Sensor 3</th>
+                <th>Sensor 4</th>
+                <th>Sensor 5</th>
+                <th>Device</th>
+                <th>Waktu</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in datas %}
+              <tr>
+                <td>{{ data.nilai1 }}</td>
+                <td>{{ data.nilai2 }}</td>
+                <td>{{ data.nilai3 }}</td>
+                <td>{{ data.nilai4 }}</td>
+                <td>{{ data.nilai5 }}</td>
+                <td>{{ data.deviceName }}</td>
+                <td>{{ data.waktu }}</td>
+                <td><button id="hapus" value="{{ data.id }}">Hapus</button></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script src="/static/statistik/js/app.js"></script>
+  </body>
+</html>
