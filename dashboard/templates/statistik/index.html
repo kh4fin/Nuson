@@ -27,6 +27,7 @@
                 <th>Sensor 4</th>
                 <th>Sensor 5</th>
                 <th>Device</th>
+                <th>Tipe Kerusakan</th>
                 <th>Waktu</th>
                 <th>Aksi</th>
               </tr>
@@ -40,8 +41,9 @@
                 <td>{{ data.nilai4 }}</td>
                 <td>{{ data.nilai5 }}</td>
                 <td>{{ data.deviceName }}</td>
+                <td>{{ data.label }}</td>
                 <td>{{ data.waktu }}</td>
-                <td><button id="hapus" value="{{ data.id }}">Hapus</button></td>
+                <td><button id="hapus" value="{{ datas.data.id }}">Hapus</button></td>
               </tr>
               {% endfor %}
             </tbody>

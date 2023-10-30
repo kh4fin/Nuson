@@ -9,5 +9,9 @@ class Nuson(models.Model):
     waktu = models.DateTimeField(auto_now_add=True)
     deviceName = models.CharField(max_length=100)
 
+    class Meta:
+        verbose_name = "Sensor Reading"
+        verbose_name_plural = "Sensor Reading"
+
     def __str__(self):
         return f'ID: {self.id}, Nilai1: {self.nilai1}, Nilai2: {self.nilai2}, Nilai3: {self.nilai3}, Nilai4: {self.nilai4}, Nilai5: {self.nilai5}, Waktu: {self.waktu}, DeviceName: {self.deviceName}'

@@ -7,13 +7,36 @@ from .serializers import NusonSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import get_object_or_404
-
+from django.templatetags.static import static
+import pickle
+import os
+from Nuson.settings import BASE_DIR
+import numpy as np
 
 
 
 class NusonViewSet(viewsets.ModelViewSet):
     queryset = Nuson.objects.all()
     serializer_class = NusonSerializer
+    STATIC_DIR = os.path.join(BASE_DIR, 'Nuson\static\modelAi')
+    test = os.path.join(STATIC_DIR, 'modelRF.pickle')
+    f = open(test, 'rb')
+    model = pickle.load(f)
+    f.close()
+
+    #http://127.0.0.1:8000/nuson/vm?nilai1=12ax11ax11ax50ax15ax12ax11ax11ax11ax15ax12ax11ax11ax11ax11ax12ax11ax11ax11ax15ax12ax11ax11ax11ax15
+    @api_view(['GET'])
+    def lookAI(request):
+        if request.method == 'GET':
+            nilai1 = request.GET.get('nilai1')
+            ar = []
+            for i in nilai1.split('ax'):
+                ar.append(float(i))
+                # print(float(i))  
+            nilai = NusonViewSet.model.predict(np.array(ar).reshape(1, -1))
+            return Response({"kategori" : nilai[0]}, status=status.HTTP_200_OK)
+        else:
+            return Response(None, status=status.HTTP_400_BAD_REQUEST)
 
     @api_view(['GET'])
     def add(request):
