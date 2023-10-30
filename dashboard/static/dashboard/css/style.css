@@ -56,7 +56,8 @@
   /* height: 100vh; */
   display: flex;
   flex-direction: column;
-  padding-top: 20px;
+/*   padding-top: 20px; */
+  padding: 20px 30px;
 }
 
 .wrapper .content {
